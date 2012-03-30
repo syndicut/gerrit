@@ -20,10 +20,12 @@ set -e
 
 case "$1" in
     configure)
-        adduser --system --home /var/lib/gerrit --no-create-home --group --shell /bin/bash --disabled-password gerrit
-        chgrp -R gerrit /var/lib/gerrit
-        chmod -R g+w /var/lib/gerrit
-        su -c 'java -jar /var/lib/gerrit/bin/gerrit.war init -d /var/lib/gerrit' gerrit
+	local GERRIT_SITEPATH=/var/lib/gerrit
+	local DIRS="$GERRIT_SITEPATH /var/lib/gerrit /var/log/gerrit /var/cache/gerrit"
+        adduser --system --home $GERRIT_SITEPATH --no-create-home --group --shell /bin/bash --disabled-password gerrit
+        chgrp gerrit $DIRS
+        chmod g+w $DIRS
+        su -c "java -jar $GERRIT_SITEPATH/bin/gerrit.war init -d $GERRIT_SITEPATH" gerrit
         update-rc.d gerrit defaults
         service gerrit start
     ;;
