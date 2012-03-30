@@ -1,0 +1,4 @@
+etc/gerrit
+var/lib/gerrit
+var/log/gerrit
+var/cache/gerrit

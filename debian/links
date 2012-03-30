@@ -1,0 +1,5 @@
+/usr/share/java /var/lib/gerrit/lib
+/etc/gerrit /var/lib/gerrit/etc
+/var/lib/gerrit/bin/gerrit.sh /etc/init.d/gerrit
+/var/cache/gerrit /var/lib/gerrit/cache
+/var/log/gerrit /var/lib/gerrit/logs
