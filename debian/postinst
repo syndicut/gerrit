@@ -23,7 +23,7 @@ case "$1" in
         adduser --system --home /var/lib/gerrit --no-create-home --group --shell /bin/bash --disabled-password gerrit
         chgrp -R gerrit /var/lib/gerrit
         chmod -R g+w /var/lib/gerrit
-        sudo -u gerrit java -jar /var/lib/gerrit/bin/gerrit.war init -d /var/lib/gerrit
+        su -c 'java -jar /var/lib/gerrit/bin/gerrit.war init -d /var/lib/gerrit' gerrit
         update-rc.d gerrit defaults
         service gerrit start
     ;;
