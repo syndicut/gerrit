@@ -21,7 +21,7 @@ set -e
 case "$1" in
     configure)
 	local GERRIT_SITEPATH=/var/lib/gerrit
-	local DIRS="$GERRIT_SITEPATH /var/lib/gerrit /var/log/gerrit /var/cache/gerrit"
+	local DIRS="$GERRIT_SITEPATH /etc/gerrit /var/log/gerrit /var/cache/gerrit"
         adduser --system --home $GERRIT_SITEPATH --no-create-home --group --shell /bin/bash --disabled-password gerrit
         chgrp gerrit $DIRS
         chmod g+w $DIRS
