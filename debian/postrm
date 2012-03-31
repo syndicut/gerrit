@@ -25,7 +25,7 @@ case "$1" in
     purge)
         rm -f /etc/init.d/gerrit
         update-rc.d gerrit remove
-        userdel gerrit
+        userdel gerrit || true
     ;;
     *)
         echo "postrm called with unknown argument \`$1'" >&2
