@@ -22,7 +22,7 @@ case "$1" in
     configure)
     local confirmation
 	local gerrit_path=/var/lib/gerrit
-	local dir="$gerrit_path /etc/gerrit /var/log/gerrit /var/cache/gerrit"
+	local dirs="$gerrit_path /etc/gerrit /var/log/gerrit /var/cache/gerrit"
         adduser --system --home $gerrit_path --no-create-home --group --shell /bin/bash --disabled-password gerrit
         chgrp -R gerrit $dirs
         chmod -R g+w $dirs
