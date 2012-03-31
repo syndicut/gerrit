@@ -20,21 +20,22 @@ set -e
 
 case "$1" in
     configure)
-    local confirmation
-	local gerrit_path=/var/lib/gerrit
-	local dirs="$gerrit_path /etc/gerrit /var/log/gerrit /var/cache/gerrit"
-        adduser --system --home $gerrit_path --no-create-home --group --shell /bin/bash --disabled-password gerrit
-        chgrp -R gerrit $dirs
-        chmod -R g+w $dirs
-	su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_rsa_key" -N '' -t rsa" gerrit
-	su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_dsa_key" -N '' -t dsa" gerrit
-    echo
-	echo "When asked to install required Bouncy Castle Crypto v144 say no, as it is already included as dependency"
-	echo "Press any key to continue..."
-	read confirmation
-        su -c "java -jar $gerrit_path/bin/gerrit.war init -d $gerrit_path" gerrit
-        update-rc.d gerrit defaults
-        service gerrit start
+       local confirmation
+	   local gerrit_path=/var/lib/gerrit
+	   local dirs="$gerrit_path /etc/gerrit /var/log/gerrit /var/cache/gerrit"
+       ln -s /var/lib/gerrit/bin/gerrit.sh /etc/init.d/gerrit
+       adduser --system --home $gerrit_path --no-create-home --group --shell /bin/bash --disabled-password gerrit
+       chgrp -R gerrit $dirs
+       chmod -R g+w $dirs
+	   su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_rsa_key" -N '' -t rsa" gerrit
+	   su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_dsa_key" -N '' -t dsa" gerrit
+       echo
+	   echo "When asked to install required Bouncy Castle Crypto v144 say no, as it is already included as dependency"
+	   echo "Press any key to continue..."
+	   read confirmation
+       su -c "java -jar $gerrit_path/bin/gerrit.war init -d $gerrit_path" gerrit
+       update-rc.d gerrit defaults
+       service gerrit start
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
