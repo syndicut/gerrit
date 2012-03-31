@@ -1,6 +1,8 @@
 The Debian Package gerrit
 ----------------------------
 
-Comments regarding the Package
+I was to lazy to compile package from source with maven, so I've just package the .war package.
+Package comes with defaults set to MySQL database and Bouncy Castle Crypto v144.
+When asked to install required Bouncy Castle Crypto v144 say no, as it is already included as dependency.
 
  -- Rashit Azizbaev <syndicut@yandex-team.ru>  Fri, 30 Mar 2012 18:07:24 +0000
