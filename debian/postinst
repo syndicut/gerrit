@@ -28,6 +28,7 @@ case "$1" in
         chmod -R g+w $dirs
 	su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_rsa_key" -N '' -t rsa" gerrit
 	su -c "ssh-keygen -q -f "$gerrit_path/etc/ssh_host_dsa_key" -N '' -t dsa" gerrit
+    echo
 	echo "When asked to install required Bouncy Castle Crypto v144 say no, as it is already included as dependency"
 	echo "Press any key to continue..."
 	read confirmation
