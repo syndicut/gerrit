@@ -21,10 +21,15 @@ set -e
 
 case "$1" in
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+        rm -rf /var/log/gerrit
+        rm -f /var/lib/gerrit/bin/gerrit.sh
+        rm -rf /var/lib/gerrit/cache
     ;;
     purge)
+        rm -rf /var/lib/gerrit/etc
+        rm -f /etc/gerrit
         rm -f /etc/init.d/gerrit
-        update-rc.d gerrit remove
+        update-rc.d gerrit remove >/dev/null
         userdel gerrit || true
     ;;
     *)
