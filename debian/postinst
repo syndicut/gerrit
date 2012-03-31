@@ -29,7 +29,7 @@ case "$1" in
 	su -c "ssh-keygen -q -f "$GERRIT_SITEPATH/etc/ssh_host_dsa_key" -N '' -t dsa" gerrit
 	echo "When asked to install required Bouncy Castle Crypto v144 say no, as it is already included as dependency"
 	echo "Press any key to continue..."
-	read
+	read || true
         su -c "java -jar $GERRIT_SITEPATH/bin/gerrit.war init -d $GERRIT_SITEPATH" gerrit
         update-rc.d gerrit defaults
         service gerrit start
