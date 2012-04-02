@@ -7,7 +7,7 @@ Standards-Version: 3.8.3
 Homepage: http://code.google.com/p/gerrit/
 
 Package: gerrit
-Architecture: any
+Architecture: all
 Pre-Depends: java6-runtime
 Depends: ${misc:Depends}, libmysql-java, libbcprov-java, openssh-client, adduser
 Description: Web based code review system
