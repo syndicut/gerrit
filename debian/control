@@ -9,7 +9,7 @@ Homepage: http://code.google.com/p/gerrit/
 Package: gerrit
 Architecture: all
 Pre-Depends: java6-runtime
-Depends: ${misc:Depends}, libmysql-java, libbcprov-java, openssh-client, adduser
+Depends: ${misc:Depends}, libmysql-java, libbcprov-java (>= 1.44), openssh-client, adduser
 Description: Web based code review system
  Gerrit is a web based code review system, facilitating online code reviews for 
  projects using the Git version control system.
